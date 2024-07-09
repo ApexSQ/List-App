@@ -14,6 +14,11 @@ app.use(express.urlencoded({ extended : true }))
 //app.use(cors("*")); 
 
 
+// importing model 
+
+const ListAppModel = require ( './models/List);' );
+
+
 app.get("/", function (req, res) {
   res.send('Hello Nodmonkey')
 })
