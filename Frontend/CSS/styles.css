@@ -1,15 +1,9 @@
-.lists-items .list-group-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+body {
+  background-color: lightgray;
 }
 
-.lists-items .list-group-item .text {
-    flex-grow: 1;
-    margin-right: 10px;
-    
-}
-
-.lists-items .list-group-item button {
-    margin-left: 10px;
+.task-card .card {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #0a87b9; /* Black color */
 }
