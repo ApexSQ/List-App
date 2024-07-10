@@ -54,7 +54,7 @@ app.post("/lists", async (req, res) => {
     
   } catch (error) {
     console.log(error)
-    res.status(500).json({ message: 'Error fetching data', error: err.message });
+    res.status(500).json({ message: 'Error fetching data', error: error.message });
   }
 
 });

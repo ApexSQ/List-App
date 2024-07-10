@@ -34,3 +34,47 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log(error);
     }
 });
+
+
+//PUT
+
+
+let list = '';
+
+const input = document.querySelector(".new-task");
+input.addEventListener("input", function(event) { 
+    list = event.target.value;
+})
+
+const addButton = document.querySelector(".submit-btn");
+addButton.addEventListener("click", function(){
+    postHandler();
+    location.reload();
+})
+
+async function postHandler() {
+    try {
+        const options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                text: list
+            })
+        }
+
+        const response = await fetch(url, options);
+
+        if(response.ok) {
+            console.log("VERY SEC");
+        } else {
+            const errorData = await response.json();
+            console.log("VERY NOT SEC");
+            console.log("Error:", errorData);
+        }
+    } catch (error) {
+        console.log("Error:", error);
+    }
+}
+
