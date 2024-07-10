@@ -1,0 +1,15 @@
+.lists-items .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lists-items .list-group-item .text {
+    flex-grow: 1;
+    margin-right: 10px;
+    
+}
+
+.lists-items .list-group-item button {
+    margin-left: 10px;
+}
