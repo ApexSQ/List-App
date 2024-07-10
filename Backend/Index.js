@@ -27,7 +27,7 @@ mongoose.connect(ConnectionString).then(() => {
 // CRUD Operations
 
 // Get Method
-app.get("/", async (req, res) => {
+app.get("/lists", async (req, res) => {
   try {
     const response = await ListAppModel.find({});
     console.log(response);
@@ -35,5 +35,74 @@ app.get("/", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: 'Error fetching data', error: err.message });
+  }
+});
+
+
+// Create Method PostMethod
+
+app.post("/lists", async (req, res) => {
+  try {
+
+    console.log(req.body);
+
+    const list = req.body;
+   
+    const newItem = await ListAppModel.create(list);
+
+    res.status(200).send( "successfull");
+    
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Error fetching data', error: err.message });
+  }
+
+});
+
+//delete Method
+
+app.delete("/lists/:id", async (req, res) => {
+  try {
+
+    let id = req.params.id;
+    console.log(id);
+
+    const deleteItem = await ListAppModel.deleteOne({
+      _id: id
+    });
+
+    res.status(200).send( " DELETE success")
+
+    
+    
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Error fetching data', error: err.message });
+  }
+
+});
+
+// put Method
+
+
+app.put("/lists/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { text } = req.body;
+
+    const updatedItem = await ListAppModel.findByIdAndUpdate(
+      id,
+      { $set: { text: text } },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedItem) {
+      return res.status(404).json({ message: 'Item not found' });
+    }
+
+    res.status(200).json(updatedItem);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error updating item', error: error.message });
   }
 });
