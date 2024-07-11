@@ -20,6 +20,22 @@ document.addEventListener('DOMContentLoaded', async () => {
           newTaskCard.classList.add("col-md-4", "mb-4", "task-card");
           newTaskCard.dataset.id = list.id;
 
+
+
+          let previousStatus = list.status; // Store the initial status
+
+          let StatusColour = " "
+
+
+          if (list.status === "InProgress") {
+            StatusColour = "btn-warning";
+        } else if (list.status === "Incomplete") {
+            StatusColour = "btn-outline-danger";
+        }else{
+          StatusColour = "btn-success";
+        }
+
+
           newTaskCard.innerHTML = `
             <div class="card">
               <div class="card-body">
@@ -27,20 +43,23 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <button class="delete-btn btn btn-danger float-right m-1">Delete</button>
                 <button class="update-btn btn btn-primary float-right m-1">Update</button>
                 <div class="dropdown float-right m-1">
-                <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button class="btn dropdown-toggle ${StatusColour}" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopow="true" aria-expanded="false">
                     ${list.status}
-                </button>
-                <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
+                  </button>
+                  <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
                     <button type="button" class="Incomplete-btn btn btn-outline-danger m-1">Incomplete</button>
                     <button type="button" class="Inprogress-btn btn btn-warning m-1">Inprogress</button>
                     <button type="button" class="Completed-btn btn btn-success m-1">Completed</button>
+                  </div>
                 </div>
               </div>
             </div>
           `;
 
-
           listsContainer.appendChild(newTaskCard);
+
+          
+
 
 
           //Event listener incomplete button click
@@ -59,6 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               console.log("InProgress Clicked")
               console.log(list._id)
               StatusUpdater(list._id,"InProgress"); 
+              location.reload();
 
           });
 
@@ -248,11 +268,16 @@ async function updateItem(ItemToUpdated){
 }
 
 
+//Sratus update
+
+
 async function StatusUpdater(taskId, newStatus) {
     
-    co
+    console.log(taskId);
+    console.log(newStatus);
 
-    const updateURL = `http://localhost:3000/lists/${taskId}`;
+
+    const updateURL = `http://localhost:3000/lists/${taskId}`
   
     try {
       const options = {
@@ -262,7 +287,7 @@ async function StatusUpdater(taskId, newStatus) {
         },
         body: JSON.stringify({
           status: newStatus
-        }),
+        })
       };
   
       const response = await fetch(updateURL, options);

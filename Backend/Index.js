@@ -89,11 +89,11 @@ app.delete("/lists/:id", async (req, res) => {
 app.put("/lists/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { text } = req.body;
+    const { text, status } = req.body;
 
     const updatedItem = await ListAppModel.findByIdAndUpdate(
       id,
-      { $set: { text: text } },
+      { $set: { text: text, status: status } },
       { new: true, runValidators: true }
     );
 
