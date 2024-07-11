@@ -34,7 +34,7 @@ app.get("/lists", async (req, res) => {
     res.json(response);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: 'Error fetching data', error: err.message });
+    res.status(500).json({ message: 'Error fetching data', error: error.message });
   }
 });
 
@@ -78,7 +78,7 @@ app.delete("/lists/:id", async (req, res) => {
     
   } catch (error) {
     console.log(error)
-    res.status(500).json({ message: 'Error fetching data', error: err.message });
+    res.status(500).json({ message: 'Error fetching data', error: error.message });
   }
 
 });

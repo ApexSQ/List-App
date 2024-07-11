@@ -1,14 +1,12 @@
-
 const mongoose = require("mongoose");
 
-//schema
-
+// Schema
 const ListAppSchema = mongoose.Schema({
 
-    text: {type: String, required: true}
-    
+  text: { type: String, required: true }
+  
 });
 
-const ListAppModel = mongoose.model("Tasks", ListAppSchema)
+const ListAppModel = mongoose.model("Tasks", ListAppSchema);
 
 module.exports = ListAppModel;
