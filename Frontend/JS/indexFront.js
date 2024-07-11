@@ -23,15 +23,52 @@ document.addEventListener('DOMContentLoaded', async () => {
           newTaskCard.innerHTML = `
             <div class="card">
               <div class="card-body">
-                <p class="card-text">${list.text}</p>
+                <p class="card-text text-center">${list.text}</p>
                 <button class="delete-btn btn btn-danger float-right m-1">Delete</button>
                 <button class="update-btn btn btn-primary float-right m-1">Update</button>
+                <div class="dropdown float-right m-1">
+                <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    ${list.status}
+                </button>
+                <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
+                    <button type="button" class="Incomplete-btn btn btn-outline-danger m-1">Incomplete</button>
+                    <button type="button" class="Inprogress-btn btn btn-warning m-1">Inprogress</button>
+                    <button type="button" class="Completed-btn btn btn-success m-1">Completed</button>
+                </div>
               </div>
             </div>
           `;
 
 
           listsContainer.appendChild(newTaskCard);
+
+
+          //Event listener incomplete button click
+
+
+
+
+
+
+
+          //Event listener Inprogress button click
+
+          const InprogressButton = newTaskCard.querySelector(".Inprogress-btn");
+          InprogressButton.addEventListener("click", async () => {
+              
+              console.log("InProgress Clicked")
+              console.log(list._id)
+              StatusUpdater(list._id,"InProgress"); 
+
+          });
+
+
+
+
+
+
+
+          //Event listener Completed button click
 
         
 
@@ -112,7 +149,8 @@ async function postHandler() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                text: list
+                text: list,
+                status: "Incomplete"
             })
         }
 
@@ -209,50 +247,34 @@ async function updateItem(ItemToUpdated){
 
 }
 
-/*async function updateItem(ItemToUpdated){
 
-    console.log(ItemToUpdated);
+async function StatusUpdater(taskId, newStatus) {
     
-    const {_id, text} = ItemToUpdated;
+    co
 
-    isUpdating = true;
-
-    const updateURL = `http://localhost:3000/lists/${_id}`
-
-    input.value = text;
-
-    NewItem = ItemToUpdated;
-
+    const updateURL = `http://localhost:3000/lists/${taskId}`;
+  
     try {
-
-        const option = {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body: JSON.stringify({
-                text: list
-            })
-        }
-        
-        const response = await fetch(updateURL, option);
-
-        if (response.ok) {
-            
-            console.log("UPDATE WORKING")
-
-        } else {
-            console.log(" Failed")
-        }
-
-
+      const options = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          status: newStatus
+        }),
+      };
+  
+      const response = await fetch(updateURL, options);
+  
+      if (response.ok) {
+        const updatedTask = await response.json();
+        console.log("Task status updated successfully:", updatedTask);
+      } else {
+        console.error("Error updating task status:", response.status);
+      }
     } catch (error) {
-        console.log("Error:", error);
+      console.error("Error updating task status:", error);
     }
-
-
-}
-*/
-
+  }
 
