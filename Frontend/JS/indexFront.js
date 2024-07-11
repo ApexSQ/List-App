@@ -84,13 +84,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-
-
-
-
           //Event listener Completed button click
 
-        
+ 
+          
+          
 
             // Add the event listener to the delete button
             const deleteButton = newTaskCard.querySelector(".delete-btn");
