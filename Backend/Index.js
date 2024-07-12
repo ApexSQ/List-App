@@ -16,11 +16,11 @@ const ConnectionString = "mongodb+srv://djosh734:jdavies01@cluster0.0qmyd6j.mong
 mongoose.connect(ConnectionString).then(() => {
   console.log("connected to database");
 
-  const port = process.env.PORT || 3000;
+ /* const port = process.env.PORT || 3000;
   app.listen(port, function() {
     console.log(`Server running on port ${port}`);
   });
-
+*/
 
 })
 .catch((error) => {
