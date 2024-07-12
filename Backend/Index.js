@@ -107,3 +107,6 @@ app.put("/lists/:id", async (req, res) => {
     res.status(500).json({ message: 'Error updating item', error: error.message });
   }
 });
+
+
+module.exports = app;
