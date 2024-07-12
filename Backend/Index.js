@@ -32,8 +32,8 @@ app.get("/lists", async (req, res) => {
     const response = await ListAppModel.find({});
     console.log(response);
     res.json(response);
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
     res.status(500).json({ message: 'Error fetching data', error: error.message });
   }
 });
