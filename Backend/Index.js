@@ -6,7 +6,7 @@ const app = express();
 
 // setting up middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended : true }));
+app.use(express.urlencoded({ extended : true })); 
 app.use(cors("*"));
 
 // importing model
