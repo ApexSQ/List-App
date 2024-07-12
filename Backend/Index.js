@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require("cors");
 const mongoose = require('mongoose');
+
 const app = express();
 
 // setting up middleware
@@ -13,25 +14,19 @@ const ListAppModel = require("./model/ListApp");
 
 const ConnectionString = "mongodb+srv://djosh734:jdavies01@cluster0.0qmyd6j.mongodb.net/ListAppDB";
 
-mongoose.connect(ConnectionString).then(() => {
-  console.log("connected to database");
-
-  const port = process.env.PORT || 3000;
-  app.listen(port, function() {
-    console.log(`Server running on port ${port}`);
-  });
-
-
-})
-.catch((error) => {
-  console.log('Error connecting to database:', error);
-});
+mongoose
+	.connect(ConnectionString)
+	.then(() => {
+		console.log("Connected to the databasez");
+		app.listen(3000, function () {
+			console.log("server running at port 3000");
+		});
+	})
+	.catch((err) => console.log(err));
 
 // CRUD Operations
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the API!');
-});
+
 
 // Get Method
 app.get("/lists", async (req, res) => {
@@ -121,5 +116,3 @@ app.put("/lists/:id", async (req, res) => {
   }
 });
 
-
-module.exports = app;
