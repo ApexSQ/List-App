@@ -17,9 +17,9 @@ const ConnectionString = "mongodb+srv://djosh734:jdavies01@cluster0.0qmyd6j.mong
 mongoose
 	.connect(ConnectionString)
 	.then(() => {
-		console.log("Connected to the databasez");
-		app.listen(3000, function () {
-			console.log("server running at port 3000");
+		console.log("Connected to the database");
+		app.listen(port, function () {
+			console.log(`server running at port ${port}`);
 		});
 	})
 	.catch((err) => console.log(err));
