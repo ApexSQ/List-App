@@ -14,13 +14,14 @@ const ListAppModel = require("./model/ListApp");
 
 const ConnectionString = "mongodb+srv://djosh734:jdavies01@cluster0.0qmyd6j.mongodb.net/ListAppDB";
 
-mongoose
-	.connect(ConnectionString)
-	.then(() => {
+mongoose.connect(ConnectionString).then(() => {
+
 		console.log("Connected to the databasez");
 		app.listen(3000, function () {
 			console.log("server running at port 3000");
+
 		});
+    
 	})
 	.catch((err) => console.log(err));
 
