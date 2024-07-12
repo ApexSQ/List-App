@@ -34,14 +34,18 @@ app.get('/', (req, res) => {
 });
 
 // Get Method
-app.get("/lists", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
+
     const response = await ListAppModel.find({});
+
     console.log(response);
+
     res.json(response);
+
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: 'Error fetching data', error: error.message });
+    res.status(500).json({ message: 'Error fetching datazzz', error: error.message });
   }
 });
 
