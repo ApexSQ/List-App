@@ -16,15 +16,22 @@ const ConnectionString = "mongodb+srv://djosh734:jdavies01@cluster0.0qmyd6j.mong
 mongoose.connect(ConnectionString).then(() => {
   console.log("connected to database");
 
-  app.listen(3000, function() {
-    console.log('Server running on port 3000');
+  const port = process.env.PORT || 3000;
+  app.listen(port, function() {
+    console.log(`Server running on port ${port}`);
   });
+
+
 })
 .catch((error) => {
   console.log('Error connecting to database:', error);
 });
 
 // CRUD Operations
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the API!');
+});
 
 // Get Method
 app.get("/lists", async (req, res) => {
