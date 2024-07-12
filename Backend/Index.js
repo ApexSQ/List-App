@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
 });
 
 // Get Method
-app.get("/", async (req, res) => {
+app.get("/lists", async (req, res) => {
   try {
 
     const response = await ListAppModel.find({});
@@ -48,6 +48,8 @@ app.get("/", async (req, res) => {
     res.status(500).json({ message: 'Error fetching datazzz', error: error.message });
   }
 });
+
+ 
 
 
 // Create Method PostMethod
