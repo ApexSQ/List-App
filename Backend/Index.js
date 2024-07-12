@@ -14,15 +14,25 @@ const ListAppModel = require("./model/ListApp");
 
 const ConnectionString = "mongodb+srv://djosh734:jdavies01@cluster0.0qmyd6j.mongodb.net/ListAppDB";
 
+const server = http.createServer(app);
+
+server.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+const http = require('http');
+
 mongoose
-	.connect(ConnectionString)
-	.then(() => {
-		console.log("Connected to the database");
-		app.listen(port, function () {
-			console.log(`server running at port ${port}`);
-		});
-	})
-	.catch((err) => console.log(err));
+  .connect(ConnectionString)
+  .then(() => {
+    console.log("Connected to the database");
+    const server = http.createServer(app);
+
+    server.listen(port, () => {
+      console.log(`Server is running on port ${port}`);
+    });
+  })
+  .catch((err) => console.log(err));
 
 // CRUD Operations
 
