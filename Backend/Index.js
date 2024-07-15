@@ -28,7 +28,6 @@ mongoose.connect(ConnectionString).then(() => {
 // CRUD Operations
 
 
-
 // Get Method
 app.get("/lists", async (req, res) => {
   try {

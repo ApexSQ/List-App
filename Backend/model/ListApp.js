@@ -8,6 +8,6 @@ const ListAppSchema = mongoose.Schema({
 
 });
 
-const ListAppModel = mongoose.model("Tasks", ListAppSchema);
+const ListAppModel = mongoose.model("tasks", ListAppSchema);
 
 module.exports = ListAppModel;
