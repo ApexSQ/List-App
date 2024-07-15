@@ -1,119 +1,99 @@
-const express = require('express');
+//importing usign common js
+const express = require("express");
 const cors = require("cors");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+
+//importing using es module
+// import express from "express";
 
 const app = express();
 
-// setting up middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended : true }));
+//setting middleware
+app.use(express.json()); //
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cors("*"));
 
-// importing model
-const ListAppModel = require("./model/ListApp");
+//Importing model
+const TodoModel = require("./model/Todo");
 
-const ConnectionString = "mongodb+srv://djosh734:jdavies01@cluster0.0qmyd6j.mongodb.net/ListAppDB";
+const connectionString = "mongodb+srv://nidup1998:learningtodo@cluster0.ivup0cn.mongodb.net/todoDB"; //we added name of the database at the end of the string
 
-mongoose.connect(ConnectionString).then(() => {
-
-		console.log("Connected to the databasez");
+mongoose
+	.connect(connectionString)
+	.then(() => {
+		console.log("Connected to the database");
 		app.listen(3000, function () {
 			console.log("server running at port 3000");
-
 		});
-    
 	})
 	.catch((err) => console.log(err));
 
-// CRUD Operations
+//CRUD Opertaions
 
+//get method
+//Read method
+app.get("/todos", async (req, res) => {
+	// res.send("Hello Perth!");
+	try {
+		const response = await TodoModel.find({});
 
+		// console.log(response);
 
-// Get Method
-app.get("/lists", async (req, res) => {
-  try {
-
-    const response = await ListAppModel.find({});
-
-    console.log(response);
-
-    res.json(response);
-
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: 'Error fetching datazzz', error: error.message });
-  }
+		res.json(response);
+	} catch (err) {
+		console.log(err);
+	}
 });
 
- 
+//Create method
+app.post("/todos", async (req, res) => {
+	try {
+		console.log(req.body);
 
+		const todo = req.body;
 
-// Create Method PostMethod
+		//add the new item to the database
+		const newItem = await TodoModel.create(todo);
 
-app.post("/lists", async (req, res) => {
-  try {
-
-    console.log(req.body);
-
-    const list = req.body;
-   
-    const newItem = await ListAppModel.create(list);
-
-    res.status(200).send( "successfull");
-    
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: 'Error fetching data', error: error.message });
-  }
-
+		// res.send("Your post method is working");
+		res.status(200).send("Successful");
+	} catch (error) {
+		console.log(error);
+		res.status(500).send("Server Error");
+	}
 });
 
+//Delete method
+app.delete("/todos/:id", async (req, res) => {
+	try {
+		let id = req.params.id;
 
-//delete Method
+		console.log(id);
+		const deletedItem = await TodoModel.deleteOne({
+			_id: id,
+		});
 
-app.delete("/lists/:id", async (req, res) => {
-  try {
-
-    let id = req.params.id;
-    console.log(id);
-
-    const deleteItem = await ListAppModel.deleteOne({
-      _id: id
-    });
-
-    res.status(200).send( " DELETE success")
-
-    
-    
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: 'Error fetching data', error: error.message });
-  }
-
+		res.status(200).send("Delete Successful");
+	} catch (error) {
+		console.log(error);
+		res.status(500).send("Server Error");
+	}
 });
 
-// put Method
+app.put("/todos/:id", async (req, res) => {
+	try {
+		const id = req.params.id;
+		console.log(id);
 
+		const { text } = req.body;
 
-app.put("/lists/:id", async (req, res) => {
-  try {
-    const id = req.params.id;
-    const { text, status } = req.body;
+		const updateOptions = { text: text };
+		const updateItem = await TodoModel.findByIdAndUpdate(id, updateOptions);
 
-    const updatedItem = await ListAppModel.findByIdAndUpdate(
-      id,
-      { $set: { text: text, status: status } },
-      { new: true, runValidators: true }
-    );
-
-    if (!updatedItem) {
-      return res.status(404).json({ message: 'Item not found' });
-    }
-
-    res.status(200).json(updatedItem);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error updating item', error: error.message });
-  }
+		res.status(200).send("Updated item");
+	} catch (error) {
+		console.log(error);
+		res.status(500).send("Server Error");
+	}
 });
-

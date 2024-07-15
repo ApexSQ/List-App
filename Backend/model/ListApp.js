@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const ListAppSchema = mongoose.Schema({
 
   text: { type: String, required: true },
-  status: { type: String, required: true }
+  status: { type: String, required: true },
 
 });
 
