@@ -1,4 +1,4 @@
-const url = "http://localhost:3000/lists";
+const url = "https://list-app-backend.vercel.app/lists";
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
@@ -176,7 +176,7 @@ async function postHandler() {
     async function deleteItem(id) {
         console.log(id);
 
-        const DeleteURL = `http://localhost:3000/lists/${id}`
+        const DeleteURL = `https://list-app-backend.vercel.app/lists/${id}`
 
         console.log(DeleteURL);
 
@@ -213,7 +213,7 @@ async function updateItem(ItemToUpdated){
 
     isUpdating = true;
 
-    const updateURL = `http://localhost:3000/lists/${_id}`
+    const updateURL = `https://list-app-backend.vercel.app/lists/${_id}`
 
     //inputPopUp.value = text;
 
@@ -260,7 +260,7 @@ async function StatusUpdater(taskId, newStatus) {
     console.log(newStatus);
 
 
-    const updateURL = `http://localhost:3000/lists/${taskId}`
+    const updateURL = `https://list-app-backend.vercel.app/lists/${taskId}`
   
     try {
       const options = {
