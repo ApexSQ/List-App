@@ -7,11 +7,11 @@
       },
       {
         "src": "/Frontend/CSS/(.*)",
-        "dest": "/Frontend/CSS/$1"
+        "dest": "/Frontend/CSS/styles.css"
       },
       {
         "src": "/Frontend/JS/(.*)",
-        "dest": "/Frontend/JS/$1"
+        "dest": "/Frontend/JS/indexFront.js"
       }
     ]
   }
