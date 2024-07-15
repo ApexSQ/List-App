@@ -138,14 +138,11 @@ inputPopUp.addEventListener("inputPopUp", function(event) {
 })
 
 const addButton = document.querySelector(".submit-btn");
-addButton.addEventListener("click", function(){
-    postHandler();
-    //location.reload();
+addButton.addEventListener("click", async function(event){
+    event.preventDefault(); 
+    await postHandler();
 
-
-
-    
-})
+});
 
 
 async function postHandler() {
