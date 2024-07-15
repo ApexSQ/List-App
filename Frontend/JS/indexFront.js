@@ -1,6 +1,7 @@
 const url = "https://list-app-backend.vercel.app/lists";
 
 document.addEventListener('DOMContentLoaded', async () => {
+  
   try {
     const options = {
       method: "GET",
