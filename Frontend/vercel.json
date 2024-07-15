@@ -1,20 +1,17 @@
 {
     "version": 2,
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/index.html"
-      },
-      {
-        "src": "/Frontend/CSS/styles.css",
-        "dest": "/Frontend/CSS/styles.css",
-        "headers": {
-          "Content-Type": "text/css"
-        }
-      },
-      {
-        "src": "/Frontend/JS/indexFront.js",
-        "dest": "/Frontend/JS/indexFront.js"
-      }
-    ]
+    {
+      "src": "/",
+      "dest": "index.html"
+    },
+    {
+      "src": "/Frontend/CSS/.*",
+      "dest": "/Frontend/CSS/$1"
+    },
+    {
+      "src": "/Frontend/JS/.*",
+      "dest": "/Frontend/JS/$1"
+    }
+  ]
   }
