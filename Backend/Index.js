@@ -20,7 +20,7 @@ const ListAppModel = require("./model/ListApp");
 
 const ConnectionString = "mongodb+srv://djosh734:jdavies01@cluster0.0qmyd6j.mongodb.net/ListAppDB";
 
-mongoose.connect(connectionString).then(() => {
+mongoose.connect(ConnectionString).then(() => {
 
 		console.log("Connected to the databasez");
 		app.listen(3000, function () {
