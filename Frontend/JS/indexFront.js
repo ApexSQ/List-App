@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               console.log("completeButton Clicked");
               console.log(list._id);
               StatusUpdater(list._id, "Completed");
-              location.reload();
+              
             });
 
       // Event listener for Incomplete button click
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log("incompleteButton Clicked");
         console.log(list._id);
         StatusUpdater(list._id, "Incomplete");
-        location.reload();
+        
       });
 
       // Event listener for InProgress button click
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log("InProgress Clicked");
         console.log(list._id);
         StatusUpdater(list._id, "InProgress");
-        location.reload();
+        
       });
 
       // Add the event listener to the delete button
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         submitButton.addEventListener("click", async () => {
           updateItem(list);
           closePopup();
-          location.reload();
+          
         });
 
         const closeButton = document.getElementById("closePopup");
@@ -237,7 +237,7 @@ async function updateItem(ItemToUpdated){
         const response = await fetch(updateURL, option);
 
         if (response.ok) {
-            
+            location.reload();
             console.log("UPDATE WORKING")
 
         } else {
@@ -280,6 +280,7 @@ async function StatusUpdater(taskId, newStatus) {
       if (response.ok) {
         const updatedTask = await response.json();
         console.log("Task status updated successfully:", updatedTask);
+        location.reload();
       } else {
         console.error("Error updating task status:", response.status);
       }
