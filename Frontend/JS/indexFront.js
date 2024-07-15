@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       } else {
         StatusColour = "btn-success";
       }
-
+      
       newTaskCard.innerHTML = `
         <div class="card">
           <div class="card-body">
