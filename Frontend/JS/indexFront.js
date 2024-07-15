@@ -33,23 +33,29 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       
       newTaskCard.innerHTML = `
-        <div class="card">
-          <div class="card-body">
-            <p class="card-text text-center">${list.text}</p>
-            <button class="delete-btn btn btn-danger float-right m-1">Delete</button>
-            <button class="update-btn btn btn-primary float-right m-1">Update</button>
-            <div class="dropdown float-right m-1">
-              <button class="btn dropdown-toggle ${StatusColour}" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopow="true" aria-expanded="false">
-                ${list.status}
-              </button>
-              <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
-                <button type="button" class="Incomplete-btn btn btn-outline-danger m-1">Incomplete</button>
-                <button type="button" class="Inprogress-btn btn btn-warning m-1">Inprogress</button>
-                <button type="button" class="Completed-btn btn btn-success m-1">Completed</button>
+          <div class="card shadow-lg" style="">
+            <div class="card-body" >
+              <p class="card-text text-center">
+                <p class="font-weight-bold m-0 p-0">TASK:</p> ${list.text}
+              </p>
+              <div class="d-flex flex-column align-items-center">
+                <div class="d-flex flex-row flex-md-row justify-content-center mb-2">
+                  <button class="delete-btn btn btn-danger m-1">Delete</button>
+                  <button class="update-btn btn btn-primary m-1">Update</button>
+                </div>
+                <div class="dropdown w-100 m-1 m-md-0">
+                  <button class="btn dropdown-toggle ${StatusColour} w-100" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopw="true" aria-expanded="false">
+                    ${list.status}
+                  </button>
+                  <div class="dropdown-menu text-center w-100" aria-labelledby="dropdownMenuButton">
+                    <button type="button" class="Incomplete-btn btn btn-outline-danger m-1 w-100">Incomplete</button>
+                    <button type="button" class="Inprogress-btn btn btn-warning m-1 w-100">Inprogress</button>
+                    <button type="button" class="Completed-btn btn btn-success m-1 w-100">Completed</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       `;
 
       listsContainer.appendChild(newTaskCard);
