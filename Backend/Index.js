@@ -40,8 +40,7 @@ app.get("/lists", async (req, res) => {
     res.json(response);
 
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: 'Error fetching datazzz', error: error.message });
+    console.log(err);
   }
 });
 
@@ -62,8 +61,8 @@ app.post("/lists", async (req, res) => {
     res.status(200).send( "successfull");
     
   } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: 'Error fetching data', error: error.message });
+    console.log(error);
+		res.status(500).send("Server Error CREAT");
   }
 
 });
@@ -86,8 +85,8 @@ app.delete("/lists/:id", async (req, res) => {
     
     
   } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: 'Error fetching data', error: error.message });
+    console.log(error);
+		res.status(500).send("Server Error DEL");
   }
 
 });
@@ -112,8 +111,8 @@ app.put("/lists/:id", async (req, res) => {
 
     res.status(200).json(updatedItem);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Error updating item', error: error.message });
+    console.log(error);
+		res.status(500).send("Server Error PUT");
   }
 });
 
