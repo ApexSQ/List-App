@@ -6,11 +6,11 @@
         "dest": "/index.html"
       },
       {
-        "src": "/Frontend/CSS/(.*)",
+        "src": "/Frontend/CSS/styles.css",
         "dest": "/Frontend/CSS/styles.css"
       },
       {
-        "src": "/Frontend/JS/(.*)",
+        "src": "/Frontend/JS/indexFront.js",
         "dest": "/Frontend/JS/indexFront.js"
       }
     ]
