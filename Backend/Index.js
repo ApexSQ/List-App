@@ -9,12 +9,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended : true }));
 app.use(cors("*"));
 
+
+const connectionString = "mongodb+srv://nidup1998:learningtodo@cluster0.ivup0cn.mongodb.net/js-db"
+
+
+
+
 // importing model
 const ListAppModel = require("./model/ListApp");
 
-const ConnectionString = "mongodb+srv://djosh734:jdavies01@cluster0.0qmyd6j.mongodb.net/ListAppDB";
+//const ConnectionString = "mongodb+srv://djosh734:jdavies01@cluster0.0qmyd6j.mongodb.net/ListAppDB";
 
-mongoose.connect(ConnectionString).then(() => {
+mongoose.connect(connectionString).then(() => {
 
 		console.log("Connected to the databasez");
 		app.listen(3000, function () {

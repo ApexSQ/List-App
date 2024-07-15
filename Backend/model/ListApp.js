@@ -8,6 +8,8 @@ const ListAppSchema = mongoose.Schema({
 
 });
 
-const ListAppModel = mongoose.model("tasks", ListAppSchema);
+//const ListAppModel = mongoose.model("tasks", ListAppSchema);
+
+const ListAppModel = mongoose.model("joshua-db", ListAppSchema);
 
 module.exports = ListAppModel;
