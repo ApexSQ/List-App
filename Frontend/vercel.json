@@ -1,13 +1,16 @@
 {
     "version": 2,
     "routes": [
-
       {
-        "src": "/Frontend/CSS/styles.css",
+        "src": "/.*",
+        "dest": "/index.html"
+      },
+      {
+        "src": "/.*",
         "dest": "/Frontend/CSS/styles.css"
       },
       {
-        "src": "/Frontend/JS/indexFront.js",
+        "src": "/.*",
         "dest": "/Frontend/JS/indexFront.js"
       }
     ]
