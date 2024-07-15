@@ -1,7 +1,7 @@
 const url = "https://list-app-backend.vercel.app/lists";
 
 document.addEventListener('DOMContentLoaded', async () => {
-  
+
   try {
     const options = {
       method: "GET",
@@ -140,10 +140,13 @@ inputPopUp.addEventListener("inputPopUp", function(event) {
 const addButton = document.querySelector(".submit-btn");
 addButton.addEventListener("click", function(){
     postHandler();
-    location.reload();
+    //location.reload();
 
 
+
+    
 })
+
 
 async function postHandler() {
     try {
