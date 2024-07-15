@@ -162,6 +162,7 @@ async function postHandler() {
 
         if(response.ok) {
             console.log("VERY SEC");
+            location.reload();
         } else {
             const errorData = await response.json();
             console.log("VERY NOT SEC");
