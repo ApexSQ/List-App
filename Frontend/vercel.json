@@ -1,17 +1,19 @@
 {
     "version": 2,
-    "builds": [{ "src": "*.js", "use": "@vercel/node" }],
     "routes": [
       {
-        "src": "/.*",
+        "src": "/(.*)",
         "dest": "/index.html"
       },
       {
-        "src": "/.*",
-        "dest": "/Frontend/CSS/styles.css"
+        "src": "/Frontend/CSS/styles.css",
+        "dest": "/Frontend/CSS/styles.css",
+        "headers": {
+          "Content-Type": "text/css"
+        }
       },
       {
-        "src": "/.*",
+        "src": "/Frontend/JS/indexFront.js",
         "dest": "/Frontend/JS/indexFront.js"
       }
     ]
