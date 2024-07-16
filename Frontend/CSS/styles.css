@@ -1,22 +1,29 @@
-
+/* Styles for the task card */
 .task-card .card {
   border-width: 2px;
   border-style: solid;
-  border-color: #0a87b9; /* Black color */
+  border-color: #0a87b9;
 }
 
+/* Styles for the popup */
 .popup {
+  /* Hide the popup by default */
   display: none;
+  /* Position the popup fixed relative to the viewport */
   position: fixed;
+  /* Set the z-index to 1 to make it appear on top */
   z-index: 1;
+  /* Position the popup at the top-left corner of the viewport */
   left: 0;
   top: 0;
+  /* Make the popup cover the entire viewport */
   width: 100%;
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+/* Styles for the popup content */
 .popup-content {
   background-color: #fefefe;
   margin: 15% auto;
@@ -25,17 +32,21 @@
   width: 30%;
 }
 
+/* Styles for the dropdown menu items */
 .dropdown-menu .dropdown-item {
   padding: 0.5rem 1rem;
   white-space: normal;
 }
 
-
+/* Styles for the date and time container */
 .date-time-container {
+  
   display: flex;
   align-items: center;
 }
 
+/* Styles for the date and time display */
 #dateTimeDisplay {
-  font-size: 2rem; /* Reduce the font size */
+  
+  font-size: 2rem;
 }
